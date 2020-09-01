@@ -1,21 +1,24 @@
 {
-  "private": true,
+  "private": false,
   "name": "bici-design",
   "version": "1.0.0",
   "scripts": {
     "start": "dumi dev",
     "docs:build": "dumi build",
     "docs:deploy": "gh-pages -d docs-dist",
-    "build": "father-build",
+    "build": "webpack",
     "deploy": "npm run docs:build && npm run docs:deploy",
-    "release": "npm run build && npm publish",
-    "prettier": "prettier --write \"**/*.{js,jsx,tsx,ts,less,md,json}\"",
-    "test": "umi-test",
-    "test:coverage": "umi-test --coverage"
+    "publish": "npm run build && npm publish",
+    "prettier": "prettier --write \"**/*.{js,jsx,tsx,ts,less,md,json}\""
   },
-  "main": "dist/index.js",
-  "module": "dist/index.esm.js",
-  "typings": "dist/index.d.ts",
+  "main": "dist/bici-design.js",
+  "module": "dist/bici-design.esm.js",
+  "browserslist": [
+    "last 2 versions",
+    "Firefox ESR",
+    "> 1%",
+    "ie >= 11"
+  ],
   "gitHooks": {
     "pre-commit": "lint-staged"
   },
@@ -27,17 +30,31 @@
       "prettier --parser=typescript --write"
     ]
   },
-  "dependencies": {
-    "react": "^16.12.0"
-  },
+  "dependencies": {},
   "devDependencies": {
+    "@babel/core": "^7.11.5",
+    "@babel/preset-react": "^7.10.4",
     "@umijs/preset-react": "1.x",
     "@umijs/test": "^3.0.5",
+    "babel-loader": "^8.1.0",
+    "css-loader": "^4.2.2",
+    "dayjs": "^1.8.34",
     "dumi": "^1.0.8",
     "father-build": "^1.17.2",
     "gh-pages": "^3.0.0",
     "lint-staged": "^10.0.7",
+    "lodash": "^4.17.20",
     "prettier": "^1.19.1",
+    "style-loader": "^1.2.1",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12",
     "yorkie": "^2.0.0"
+  },
+  "peerDependencies": {
+    "react": ">=16.9.0",
+    "react-dom": ">=16.9.0"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
   }
 }
