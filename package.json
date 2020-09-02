@@ -1,7 +1,7 @@
 {
-  "private": false,
-  "name": "bici-design",
+  "name": "bicid",
   "version": "1.0.0",
+  "private": false,
   "scripts": {
     "start": "dumi dev",
     "docs:build": "dumi build",
@@ -46,10 +46,11 @@
     "@babel/preset-react": "^7.10.4",
     "@umijs/preset-react": "1.x",
     "@umijs/test": "^3.0.5",
+    "babel-eslint": "^10.1.0",
     "babel-loader": "^8.1.0",
     "css-loader": "^4.2.2",
     "dumi": "^1.0.8",
-    "eslint-config-bicitech": "^0.1.0",
+    "eslint-config-bicitech": "^0.2.0",
     "father-build": "^1.17.2",
     "gh-pages": "^3.0.0",
     "lint-staged": "^10.0.7",
