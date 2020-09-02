@@ -1,10 +1,11 @@
 /**
  * @Copyright: © 2014-2022 BICI All Rights Reserved,
- * webpack config for Bici FED web component library.
+ * webpack config for Bici FED web components library.
  */
 'use strict';
 
 const path = require('path');
+const AntdDayjsWebpackPlugin = require('antd-dayjs-webpack-plugin');
 
 function resolve(pathname) {
   return path.resolve(__dirname, pathname);
@@ -29,16 +30,55 @@ module.exports = {
     rules: [
       {
         test: /\.css$/,
-        include: resolve('src/assets/css'),
+        exclude: resolve('src/components'),
         use: ['style-loader', 'css-loader'],
       },
       {
         test: /\.css$/,
         include: resolve('src/components'),
-        use: ['style-loader', { loader: 'css-loader', options: { modules: true } }],
+        use: [
+          'style-loader',
+          { loader: 'css-loader', options: { modules: true } },
+        ],
       },
-      { test: /\.js$/, exclude: resolve('node_modules'), loader: 'babel-loader' },
+      {
+        test: /\.m?js$/,
+        exclude: /(node_modules|bower_components)/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            cacheDirectory: true,
+          },
+        },
+      },
     ],
   },
-  externals: ['react', 'react-dom', 'prop-types', 'lodash', 'dayjs'],
+  plugins: [new AntdDayjsWebpackPlugin()],
+  optimization: {
+    minimize: true,
+    splitChunks: {
+      chunks: 'all',
+      minSize: 30000,
+      minChunks: 3,
+      automaticNameDelimiter: '.',
+      cacheGroups: {
+        vendor: {
+          name: 'vendors',
+          test({ resource }) {
+            return /[\\/]node_modules[\\/]/.test(resource);
+          },
+          priority: 10,
+        },
+      },
+    },
+  },
+  externals: [
+    'react',
+    'react-dom',
+    'prop-types',
+    'lodash',
+    'dayjs',
+    /^dayjs\/plugin\/.+$/,
+    /^antd\/es\/.+$/,
+  ],
 };
