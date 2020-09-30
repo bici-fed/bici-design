@@ -36,10 +36,7 @@ module.exports = {
       {
         test: /\.css$/,
         include: resolve('src/components'),
-        use: [
-          'style-loader',
-          { loader: 'css-loader', options: { modules: true } },
-        ],
+        use: ['style-loader', { loader: 'css-loader', options: { modules: true } }],
       },
       {
         test: /\.m?js$/,
@@ -77,7 +74,9 @@ module.exports = {
     'react-dom',
     'prop-types',
     'lodash',
+    'uuid',
     'dayjs',
+    /^@ant-design\/.+$/,
     /^dayjs\/plugin\/.+$/,
     /^antd\/es\/.+$/,
   ],

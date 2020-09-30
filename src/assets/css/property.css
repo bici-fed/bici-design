@@ -3,3 +3,27 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.width100 {
+  width: 100%;
+}
+
+.mr4 {
+  margin-right: 4px;
+}
+.mr8 {
+  margin-right: 8px;
+}
+.mr12 {
+  margin-right: 12px;
+}
+
+.ml4 {
+  margin-left: 4px;
+}
+.ml8 {
+  margin-left: 8px;
+}
+.ml12 {
+  margin-left: 12px;
+}
