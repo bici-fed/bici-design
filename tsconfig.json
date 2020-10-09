@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "allowJs": true,
     "target": "esnext",
     "module": "esnext",
     "moduleResolution": "node",
@@ -15,13 +16,5 @@
     },
     "allowSyntheticDefaultImports": true
   },
-  "exclude": [
-    "node_modules",
-    "lib",
-    "es",
-    "dist",
-    "typings",
-    "**/__test__",
-    "test"
-  ]
+  "exclude": ["node_modules", "lib", "es", "dist", "typings", "**/__test__", "test"]
 }
